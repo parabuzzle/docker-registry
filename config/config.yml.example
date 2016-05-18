@@ -1,0 +1,21 @@
+version: "0.1"
+log:
+  fields:
+    service: registry
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+  cache:
+    blobdescriptor: inmemory
+  maintenance:
+    uploadpurging:
+      enabled: true
+      age: 168h
+      interval: 24h
+      dryrun: false
+http:
+  addr: 0.0.0.0:5000
+  secret: randomsecret
+  tls:
+    certificate: /etc/ssl/mycert
+    key: /etc/ssl/mykey
